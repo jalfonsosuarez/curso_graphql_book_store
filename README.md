@@ -1,2 +1,3 @@
-# graphql_plantilla
-Plantilla para motar un servidor de GraphQL con Node y Express.
+# Curso GraphQL Anartz Mujica Ledo
+
+Servidor de GraphQL con Node y Express.
