@@ -3,6 +3,32 @@ type Query {
     hello: String!
     helloWithName(name: String): String!
     peopleNumber: Int!
+    bookList: [Book!]!
+    peopleList: [People!]!
 }
 
+# Información de libros
+type Book {
+    id: ID!
+    title: String!
+    isbn: String!
+    pageCount: Int
+    publishedDate: String
+    thumbnailUrl: String
+    shortDescription: String
+    longDescription: String
+    status: String
+    authors: [String!]!
+}
+
+# Informacion de personas
+type People {
+    id: ID!
+    name: String!
+    email: String!
+    website: String
+    github: String
+    twitter: String
+    books: [String!]!
+}
 
