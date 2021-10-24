@@ -12,6 +12,7 @@
       "quotes": ["error", "single"],
       "semi": ["error", "always"],
       "@typescript-eslint/no-explicit-any": ["error", {"fixToUnknown": true}],
-      "curly": ["error", "multi-line"]
+      "curly": ["error", "multi-line"],
+      "array-bracket-spacing": ["error", "always"]
     }
 }
