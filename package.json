@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node build/app.js",
     "build": "npx tsc -p . && ncp src/schema build/esquema",
-    "dev": "nodemon \"src/app.ts\" --exec \"ts-node\" \"src/app.ts\" -e ts,graphql,json"
+    "dev": "nodemon \"src/app.ts\" --exec \"ts-node\" \"src/app.ts\" -e ts,graphql,json",
+    "lint": "npx eslint . --ext .ts"
   },
   "keywords": [
     "graphql",
