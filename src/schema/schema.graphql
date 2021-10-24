@@ -3,9 +3,19 @@ type Query {
     hello: String!
     helloWithName(name: String): String!
     peopleNumber: Int!
-    bookList: [Book!]!
-    peopleList: [People!]!
+    bookList: Result
+    book(id: ID!): Result
+    peopleList: Result
+    people(id: ID!): Result
 }
+
+type Mutation {
+    addBook( id: ID! ): Boolean
+    updateBook( id: ID! ): Boolean
+    deleteBook( id: ID! ): Boolean
+}
+
+union Data = Book | People
 
 # Información de libros
 type Book {
@@ -19,6 +29,7 @@ type Book {
     longDescription: String
     status: String
     authors: [String!]!
+    byPeopleBuy: [People]
 }
 
 # Informacion de personas
@@ -30,5 +41,15 @@ type People {
     github: String
     twitter: String
     books: [String!]!
+    #Libros comprado
+    booksBuy: [Book]
+}
+
+# Definir restultado con más detalle
+type Result {
+    status: Boolean!
+    message: String!
+    list: [Data!]
+    item: Data
 }
 
