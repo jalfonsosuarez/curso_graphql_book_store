@@ -163,7 +163,6 @@ const mutationResolvers: IResolvers = {
             };
         },
     }
-
 }
 
 export default mutationResolvers;

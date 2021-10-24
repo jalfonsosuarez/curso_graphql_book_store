@@ -1,0 +1,281 @@
+{
+	"info": {
+		"_postman_id": "4c4b0483-e59c-4a0f-bae9-99c23e1edd39",
+		"name": "Curso GraphQL 00-books",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Query",
+			"item": [
+				{
+					"name": "Lista de libros.",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query ListaLibros {\n  bookList {\n    status\n    message\n    list {\n      ... on Book {\n        id\n        title\n        isbn\n        pageCount\n        authors\n      }\n    }\n  }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Datos de un libro",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query Query($bookId: ID!) {\n  book(id: $bookId) {\n    status\n    message\n    item {\n      ... on Book {\n        id\n        title\n        isbn\n        pageCount\n      }\n    }\n  }\n}",
+								"variables": "{\n  \"bookId\": \"2\"\n}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lista de personas",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query Query {\n  peopleList {\n    status\n    message\n    list {\n      ... on People {\n        id\n        name\n        email\n        booksBuy {\n          id\n          title\n          isbn\n          pageCount\n        }\n      }\n    }\n  }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Datos de una persona",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query Query($peopleId: ID!) {\n  people(id: $peopleId) {\n    status\n    message\n    item {\n      ... on People {\n        id\n        name\n        email\n      }\n    }\n  }\n}",
+								"variables": "{\n  \"peopleId\": \"3\"\n}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Libros comprados por una persona",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query Query($peopleId: ID!) {\n  people(id: $peopleId) {\n    status\n    message\n    item {\n      ... on People {\n        id\n        name\n        booksBuy {\n          id\n          title\n          isbn\n        }\n      }\n    }\n  }\n}",
+								"variables": "{\n  \"peopleId\": \"3\"\n}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Personas que han comprado un libro",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query Query($bookId: ID!) {\n  book(id: $bookId) {\n    status\n    message\n    item {\n      ... on Book {\n        id\n        title\n        isbn\n        byPeopleBuy {\n          id\n          name\n        }\n      }\n    }\n  }\n}",
+								"variables": "{\n  \"bookId\": \"1\"\n}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Mutations",
+			"item": [
+				{
+					"name": "Personas",
+					"item": [
+						{
+							"name": "Añadir una nueva persona",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "mutation AddPeopleMutation($people: PeopleInput!) {\n  addPeople(people: $people) {\n    status\n    message\n    item {\n      ... on People {\n        id\n        name\n        email\n        website\n        github\n        twitter\n        books\n      }\n    }\n  }\n}\n",
+										"variables": "{\n  \"people\": {\n    \"name\": \"Jose Alfonso Suárez Moreno\",\n    \"email\": \"joseasuarez@gmail.com\",\n    \"website\": \"\",\n    \"github\": \"joseasuarez\",\n    \"twitter\": \"joseasuarez\",\n    \"books\": [\"1\"]\n  }\n}"
+									}
+								},
+								"url": {
+									"raw": "{{url}}",
+									"host": [
+										"{{url}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Actualizar persona",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "mutation UpdatePeopleMutation($people: PeopleInput!) {\n  updatePeople(people: $people) {\n    status\n    message\n    item {\n      ... on People {\n        id\n        name\n        email\n        website\n        github\n        twitter\n        books\n      }\n    }\n  }\n}",
+										"variables": "{\n  \"people\": {\n    \"id\": \"5\",\n    \"name\": \"Jose Alfonso Suárez Moreno\",\n    \"email\": \"joseasuarez@gmail.com\",\n    \"website\": \"joseasuarez.com\",\n    \"github\": \"joseasuarez\",\n    \"twitter\": \"joseasuarez\",\n    \"books\": [\"1\"]\n  }\n}"
+									}
+								},
+								"url": {
+									"raw": "{{url}}",
+									"host": [
+										"{{url}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Eliminar personas",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "mutation DeletePeopleMutation($deletePeopleId: ID!) {\n  deletePeople(id: $deletePeopleId) {\n    status\n    message\n  }\n}",
+										"variables": "{\n  \"deletePeopleId\": \"5\"\n}"
+									}
+								},
+								"url": {
+									"raw": "{{url}}",
+									"host": [
+										"{{url}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Libros",
+					"item": [
+						{
+							"name": "Añadir un nuevo libro",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "mutation AddBookMutation($book: BookInput!) {\n  addBook(book: $book) {\n    status\n    message\n    item {\n      ... on Book {\n        id\n        title\n        isbn\n        pageCount\n        authors\n      }\n    }\n  }\n}",
+										"variables": "{\n  \"book\": {\n    \"title\": \"SQL para programadores XBase\",\n    \"isbn\": \"No tiene\",\n    \"pageCount\": 80,\n    \"authors\": [\"Jose Alfonso\"]\n  }\n}"
+									}
+								},
+								"url": {
+									"raw": "{{url}}",
+									"host": [
+										"{{url}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Actualizar un libro",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "mutation UpdateBookMutation($book: BookInput) {\n  updateBook(book: $book) {\n    status\n    message\n    item {\n      ... on Book {\n        id\n        title\n        isbn\n        pageCount\n        authors\n      }\n    }\n  }\n}",
+										"variables": "{\n  \"book\": {\n    \"id\": \"13\",\n    \"title\": \"SQL para programadores XBase 2008\",\n    \"isbn\": \"No tiene\",\n    \"pageCount\": 80,\n    \"authors\": [\"Jose Alfonso\"]    \n  }\n}"
+									}
+								},
+								"url": {
+									"raw": "{{url}}",
+									"host": [
+										"{{url}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Eliminar libro",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "mutation DeleteBookMutation($deleteBookId: ID!) {\n  deleteBook(id: $deleteBookId) {\n    status\n    message\n  }\n}",
+										"variables": "{\n  \"deleteBookId\": \"13\"\n}"
+									}
+								},
+								"url": {
+									"raw": "{{url}}",
+									"host": [
+										"{{url}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
