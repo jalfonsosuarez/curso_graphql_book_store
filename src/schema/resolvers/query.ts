@@ -2,18 +2,17 @@ import { IPeople } from './../../interfaces/people.interface';
 import { IResolvers } from '@graphql-tools/utils';
 import data from '../../data';
 import { IBook } from '../../interfaces/book.interface';
-import { VoidExpression } from 'typescript';
 
 
 // Resolvers
 export const queryResolvers: IResolvers = {
     Query: {
-        hello: (): string => "Hola graphQL!",
+        hello: (): string => 'Hola graphQL!',
         helloWithName: (
         _: void,
         args: { name: string },
-        context: any,
-        info: object
+        context: unknown,
+        info: unknown
         ) => {
         return `Hola ${args.name}`;
         },
@@ -41,7 +40,7 @@ export const queryResolvers: IResolvers = {
                 status: bookFind === undefined ? false : true,
                 message: bookFind === undefined ? 'Libro no encontrado' : 'Libro encontrado',
                 item: bookFind
-            }
+            };
         },
 
         peopleList: (): {
@@ -67,7 +66,7 @@ export const queryResolvers: IResolvers = {
                 message: peopleFind === undefined ? 'Persona no encontrada' : 'Persona encontrada',
                 item: peopleFind
             
-            }
+            };
         }
     },
 };

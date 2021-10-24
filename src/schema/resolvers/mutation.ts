@@ -16,14 +16,14 @@ const mutationResolvers: IResolvers = {
                 return {
                     status: false,
                     message: `Ya existe un libro con el título ${args.book.title}`
-                }
+                };
             } 
 
             if ( data.books.filter( (value: IBook) => value.isbn === args.book.isbn ).length > 0 ) {
                 return {
                     status: false,
                     message: `Ya existe un libro con el ISBN ${args.book.isbn}`
-                }
+                };
             } 
 
             const idValue = +data.books[data.books.length-1].id + 1;
@@ -46,7 +46,7 @@ const mutationResolvers: IResolvers = {
                 return {
                     status: false,
                     message: `No existe un libro con el id ${args.book.id}`
-                }
+                };
             } 
             
             for( let i = 0; i < data.books.length; i++ ) {
@@ -71,7 +71,7 @@ const mutationResolvers: IResolvers = {
                 return {
                     status: false,
                     message: `No existe un libro con el id ${args.id}`
-                }
+                };
             } 
             
             let deleteItem = false;
@@ -98,7 +98,7 @@ const mutationResolvers: IResolvers = {
                 return {
                     status: false,
                     message: `Ya existe un persona con el nombre ${args.people.name}`
-                }
+                };
             } 
 
             const idValue = +data.people[data.people.length-1].id + 1;
@@ -121,7 +121,7 @@ const mutationResolvers: IResolvers = {
                 return {
                     status: false,
                     message: `No existe una persona con el id ${args.people.id}`
-                }
+                };
             } 
             
             for( let i = 0; i < data.people.length; i++ ) {
@@ -146,7 +146,7 @@ const mutationResolvers: IResolvers = {
                 return {
                     status: false,
                     message: `No existe una persona con el id ${args.id}`
-                }
+                };
             } 
             
             let deleteItem = false;
@@ -163,6 +163,6 @@ const mutationResolvers: IResolvers = {
             };
         },
     }
-}
+};
 
 export default mutationResolvers;
