@@ -13,6 +13,9 @@ type Mutation {
     addBook( book: BookInput! ): Result!
     updateBook( book: BookInput ): Result!
     deleteBook( id: ID! ): Result!
+    addPeople( people: PeopleInput! ): Result!
+    updatePeople( people: PeopleInput! ): Result!
+    deletePeople( id: ID! ): Result!
 }
 
 union Data = Book | People
@@ -59,8 +62,18 @@ type People {
     github: String
     twitter: String
     books: [String!]!
-    #Libros comprado
+    #Libros comprados
     booksBuy: [Book]
+}
+
+input PeopleInput {
+    id: ID
+    name: String!
+    email: String!
+    website: String
+    github: String
+    twitter: String
+    books: [String!]!
 }
 
 # Definir restultado con más detalle
