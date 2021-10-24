@@ -3,16 +3,16 @@ type Query {
     hello: String!
     helloWithName(name: String): String!
     peopleNumber: Int!
-    bookList: Result
-    book(id: ID!): Result
-    peopleList: Result
-    people(id: ID!): Result
+    bookList: Result!
+    book(id: ID!): Result!
+    peopleList: Result!
+    people(id: ID!): Result!
 }
 
 type Mutation {
-    addBook( id: ID! ): Boolean
-    updateBook( id: ID! ): Boolean
-    deleteBook( id: ID! ): Boolean
+    addBook( book: BookInput! ): Result!
+    updateBook( id: ID! ): Result!
+    deleteBook( id: ID! ): Result!
 }
 
 union Data = Book | People
@@ -22,7 +22,7 @@ type Book {
     id: ID!
     title: String!
     isbn: String!
-    pageCount: Int
+    pageCount: Int!
     publishedDate: String
     thumbnailUrl: String
     shortDescription: String
@@ -30,6 +30,24 @@ type Book {
     status: String
     authors: [String!]!
     byPeopleBuy: [People]
+}
+
+input BookInput {
+    id: ID
+    title: String!
+    isbn: String!
+    pageCount: Int!
+    publishedDate: String
+    thumbnailUrl: String
+    shortDescription: String
+    longDescription: String
+    status: StatusEnum = UNPUBLISH
+    authors: [String!]!
+}
+
+enum StatusEnum {
+    PUBLISH
+    UNPUBLISH
 }
 
 # Informacion de personas
