@@ -1,7 +1,8 @@
 import { IResolvers } from '@graphql-tools/utils';
-import { IBook } from '../../interfaces/book.interface';
-import { IPeople } from '../../interfaces/people.interface';
-import data from '../../data/index';
+
+import data from '../../../data/index';
+import { IBook } from '../../../interfaces/book.interface';
+import { IPeople } from '../../../interfaces/people.interface';
 
 const mutationResolvers: IResolvers = {
 

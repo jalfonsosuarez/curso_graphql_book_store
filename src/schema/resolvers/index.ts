@@ -5,7 +5,6 @@ import { mergeResolvers } from '@graphql-tools/merge';
 import { loadFilesSync } from '@graphql-tools/load-files';
 
 const resolversArray = loadFilesSync(path.join(__dirname), { extensions: [ 'js', 'ts' ] });
-console.log(resolversArray);
 
 const resolversIndex = mergeResolvers(resolversArray);
 

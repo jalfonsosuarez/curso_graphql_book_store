@@ -1,5 +1,5 @@
 import { IResolvers } from '@graphql-tools/utils';
-import data from '../../data';
+import data from '../../../data/index';
 
 const typesResolvers: IResolvers = {
   Data: {
