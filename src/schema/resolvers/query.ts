@@ -5,7 +5,7 @@ import { IBook } from '../../interfaces/book.interface';
 
 
 // Resolvers
-export const queryResolvers: IResolvers = {
+const queryResolvers: IResolvers = {
     Query: {
         hello: (): string => 'Hola graphQL!',
         helloWithName: (
@@ -70,3 +70,5 @@ export const queryResolvers: IResolvers = {
         }
     },
 };
+
+export default queryResolvers;
